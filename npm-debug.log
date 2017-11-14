@@ -1,0 +1,24 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'ln' ]
+2 info using npm@3.10.10
+3 info using node@v6.11.3
+4 verbose config Skipping project config: C:\Users\Tonkatwuck/.npmrc. (matches userconfig)
+5 verbose linkPkg C:\Users\Tonkatwuck
+6 verbose stack Error: ENOENT: no such file or directory, open 'C:\Users\Tonkatwuck\package.json'
+6 verbose stack     at Error (native)
+7 verbose cwd C:\Users\Tonkatwuck\Dropbox\!dmit2008\course-scheduler
+8 error Windows_NT 6.1.7601
+9 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "ln"
+10 error node v6.11.3
+11 error npm  v3.10.10
+12 error path C:\Users\Tonkatwuck\package.json
+13 error code ENOENT
+14 error errno -4058
+15 error syscall open
+16 error enoent ENOENT: no such file or directory, open 'C:\Users\Tonkatwuck\package.json'
+17 error enoent ENOENT: no such file or directory, open 'C:\Users\Tonkatwuck\package.json'
+17 error enoent This is most likely not a problem with npm itself
+17 error enoent and is related to npm not being able to find a file.
+18 verbose exit [ -4058, true ]

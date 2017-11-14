@@ -1,0 +1,109 @@
+<!doctype html>
+<html class="no-js" lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Course Scheduler</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <!-- PAGE MARKUP -->
+    <header>
+        <h1 class="visuallyhidden">Course Scheduler</h1>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Course Scheduler</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Add Course</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4 course-display">
+                    <h2>Add a Course</h2>
+                    <form class="course-form">
+                        <div class="form-group">
+                            <label for="course-code">Course Code</label>
+                            <input type="text" class="form-control" id="course-code" placeholder="e.g. COMP1000">
+                        </div>
+                        <div class="form-group">
+                            <label for="course-name">Course Name</label>
+                            <input type="text" class="form-control" id="course-name" placeholder="Enter course name here">
+                        </div>
+                        <div class="form-group">
+                            <label for="course-instructor">Course Instructor</label>
+                            <input type="text" class="form-control" id="course-instructor" placeholder="Enter course instructor here">
+                        </div>
+                        <fieldset class="form-group border rounded p-2">
+                            <h3>Course Times</h3>
+                            <!-- ADDED TIMES DISPLAY -->
+                            <div class="times-display hidden">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label for="course-time-day">Day of Week</label>
+                                        <select class="form-control" id="course-time-day">
+                                            <option value="monday" default>Monday</option>
+                                            <option value="tuesday">Tuesday</option>
+                                            <option value="wednesday">Wednesday</option>
+                                            <option value="thursday">Thursday</option>
+                                            <option value="friday">Friday</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="course-time-start">Start Time</label>
+                                    <input type="text" class="form-control" id="course-time-start" placeholder="e.g. 8:00AM">
+                                </div>
+                                <div class="form-group">
+                                    <label for="course-time-end">End Time</label>
+                                    <input type="text" class="form-control" id="course-time-end" placeholder="e.g. 10:00AM">
+                                </div>
+                                <button class="btn btn-secondary" type="button">Add Time</button>
+                            </div>
+                            <!-- TIME CONTROLS TEMPLATE -->
+                            <div class="time-controls hidden"></div>
+                            <div class="form-group btn-add-course-time">
+                                <label>Add a course time</label>
+                                <a href="#" class="btn-secondary btn-sm add-course-time"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </fieldset>
+                        <button class="btn btn-primary" type="submit">Add Course</button>
+                    </form>
+                </div>
+                <div class="col-8 schedule-display">
+                    <h2>Schedule Display</h2>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- VENDOR SCRIPTS -->
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-3.2.1.min.js"></script>
+    <script src="js/vendor/popper.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/underscore.js"></script>
+    <script src="js/vendor/backbone.js"></script>
+    <script src="js/vendor/handlebars-v4.0.11.js"></script>
+    <!-- TEMPLATES -->
+    
+    <!-- APPLICATION SCRIPTS -->
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

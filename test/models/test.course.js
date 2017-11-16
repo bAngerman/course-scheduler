@@ -10,6 +10,15 @@ describe('Course', function() {
 		it('has a name set to \'\'', function() {
 			expect(course.get('name')).toEqual('');
 		});
+		it('has a code set to \'\'', function() {
+			expect(course.get('code')).toEqual('');
+		});
+		it('has a instructor set to \'\'', function() {
+			expect(course.get('instructor')).toEqual('');
+		});
+		it('has a classes list set to an empty array', function() {
+			expect(course.get('classes')).toEqual([]);
+		});
 		// TODO: create tests for the remaining default attributes
 		// code, instructor, and classes
 	});

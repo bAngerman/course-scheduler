@@ -17,7 +17,7 @@
 			validate: function(attrs) {
 				
 				var errors = []; // holds all of the validationErrors
-				var days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+				var days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']; // these are good day values
 
 				/**
 				 * Helper function to reduce repitition when validating for classes' day, start, and end key existence.
@@ -73,7 +73,7 @@
 				}
 
 				/**
-				 * Change 12hr format to 24hr format time for easier comparison.
+				 * Returns an array holding the 24hr format values after converting the 12hr time passed in.
 				 * 
 				 * @param {string} time - 12hr format
 				 */
@@ -114,7 +114,7 @@
 							if (startTime.hrs > endTime.hrs) {
 								invalid = true;
 							}
-							else if (startTime.hrs == endTime.hrs && startTime.mins > endTime.mins) { //same hr, but end minutes are earlier
+							else if (startTime.hrs == endTime.hrs && startTime.mins >= endTime.mins) { //same hr, but end minutes are earlier or the same
 								invalid = true;
 							}
 						}
@@ -165,7 +165,7 @@
 					errors.push({name: 'invalidClassEnd', message: 'Class end time is invalid.'});						
 				}
 
-				if (attrs.hasOwnProperty('classes') && !invalidClassTime('start') && !invalidClassTime('end')) { // validate times before attempting to compare them
+				if (attrs.hasOwnProperty('classes') && !invalidClassTime('start') && !invalidClassTime('end')) { // validate times before attempting to compare/work with them
 					if (invalidEndBeforeStart()) {
 						errors.push({name: 'classStartEndConflict', message: 'Class end time cannot occur before start time.'});						
 					}

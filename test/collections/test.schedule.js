@@ -27,18 +27,21 @@ describe('Schedule', function() {
         describe('Filters course by code', function () {
             it('Returns only courses with the specified code', function () {
                 expect(schedule.forCode('COMP1002').length).toEqual(1);
+                expect(schedule.forCode('COMP1010').length).toEqual(0);
             });
         });
 
         describe('Filters courses by name', function () {
             it('Returns only courses with the specified name', function () {
                 expect(schedule.forName('Course 2').length).toEqual(1);
+                expect(schedule.forName('Course 4').length).toEqual(0);
             });
         });
 
         describe('Filters course by instructor', function () {
             it('Returns only courses with the specified instructor', function () {
                 expect(schedule.forInstructor('Jane Doe').length).toEqual(2);
+                expect(schedule.forInstructor('Jack Doe').length).toEqual(0);
             });
         });
     });

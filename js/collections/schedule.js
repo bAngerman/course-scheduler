@@ -9,7 +9,7 @@
                     var courseCheck;
 
                     course.get('classes').forEach(function(classTime) {
-                        if (classTime.day.toLowerCase() === day.toLowerCase()) {
+                        if (classTime.day.toUpperCase() === day.toUpperCase()) {
                             courseCheck = true;
                         }
                     });
@@ -21,6 +21,7 @@
             forCode: function(code){
                 return this.filter(function(course){
                     var codeCheck;
+
                     if(course.get('code').toUpperCase() === code.toUpperCase()){
                         codeCheck = true;
                     }
@@ -31,6 +32,7 @@
             forName: function (name) {
                 return this.filter(function (course) {
                     var nameCheck;
+
                     if(course.get('name').toUpperCase() === name.toUpperCase()){
                         nameCheck = true;
                     }
@@ -41,6 +43,7 @@
             forInstructor: function (instructor) {
                 return this.filter(function(course){
                    var instructorCheck;
+
                    if(course.get('instructor').toUpperCase() === instructor.toUpperCase()){
                        instructorCheck = true;
                    }

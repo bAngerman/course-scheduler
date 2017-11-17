@@ -88,7 +88,7 @@ describe('Course', function() {
 			expect(_.find(course.validationError, function(err) { return err.name === 'missingClassStart'; } ).message).toEqual('Class start time is missing.');						
 		});
 
-		it('ensures course start time is valid (and therefore non-empty)', function() {
+		it('ensures course start time is a valid format (and therefore non-empty)', function() {
 			course.set({ classes: [{day: 'Monday', start: '9:00', end: '10:00AM'}] }, {validate: true});
 			expect(_.find(course.validationError, function(err) { return err.name === 'invalidClassStart'; } ).message).toEqual('Class start time is invalid.');
 		});
@@ -98,13 +98,13 @@ describe('Course', function() {
 			expect(_.find(course.validationError, function(err) { return err.name === 'missingClassEnd'; } ).message).toEqual('Class end time is missing.');						
 		});
 
-		it('ensures course end time is valid (and therefore non-empty)', function() {
+		it('ensures course end time is a valid format (and therefore non-empty)', function() {
 			course.set({ classes: [{day: 'Tuesday', start: '3:00PM', end: '1:asd'}] }, {validate: true});
 			expect(_.find(course.validationError, function(err) { return err.name === 'invalidClassEnd'; } ).message).toEqual('Class end time is invalid.');
 		});
 
 		it('ensures course end time does not occur before start time', function() {
-			course.set({ classes: [{day: 'Tuesday', start: '11:00AM', end: '9:00AM'}] }, {validate: true});
+			course.set({ classes: [{day: 'Tuesday', start: '1:00PM', end: '9:00AM'}] }, {validate: true});
 			expect(_.find(course.validationError, function(err) { return err.name === 'classStartEndConflict'; } ).message).toEqual('Class end time cannot occur before start time.');
 		});
 

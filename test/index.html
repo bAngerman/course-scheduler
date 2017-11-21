@@ -16,15 +16,86 @@
     <script src="../js/vendor/handlebars-v4.0.11.js"></script>
     <!-- requires jQuery, so loaded here -->
     <script src="jasmine-2.8.0/jasmine-jquery.js"></script>
-    <!-- include source files here... -->
-    <script src="../js/models/course.js"></script>
-    <script src="../js/collections/schedule.js"></script>
-    <!-- include spec files here... -->
-    <script src="models/test.course.js"></script>
-    <script src="collections/test.schedule.js"></script>
 </head>
 
 <body>
+    <script type="text/x-handlebars-template" id="course-view-template">
+        <h2>Add a Course</h2>
+        <div class="errors"></div>
+        <form class="course-form">
+            <div class="form-group">
+                <label for="course-code">Course Code</label>
+                <input type="text" class="form-control" id="course-code" placeholder="e.g. COMP1000" value="{{code}}">
+            </div>
+            <div class="form-group">
+                <label for="course-name">Course Name</label>
+                <input type="text" class="form-control" id="course-name" placeholder="Enter course name here" value="{{name}}">
+            </div>
+            <div class="form-group">
+                <label for="course-instructor">Course Instructor</label>
+                <input type="text" class="form-control" id="course-instructor" placeholder="Enter course instructor here" value="{{instructor}}">
+            </div>
+            <fieldset class="form-group border rounded p-2">
+                <h3>Course Times</h3>
+                <!-- ADDED TIMES DISPLAY -->
+                <div class="times-display">
+                    <table class="class-time-table">
+                        {{#each classes}}
+                        <tr class="class-time">
+                            <td class="day">{{day}}</td>
+                            <td class="start">{{start}}</td>
+                            <td class="end">{{end}}</td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </div>
+                <div class="time-controls hidden">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="course-time-day">Day of Week</label>
+                            <select class="form-control" id="course-time-day">
+                                <option value="monday" default>Monday</option>
+                                <option value="tuesday">Tuesday</option>
+                                <option value="wednesday">Wednesday</option>
+                                <option value="thursday">Thursday</option>
+                                <option value="friday">Friday</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-time-start">Start Time</label>
+                        <input type="text" class="form-control" id="course-time-start" placeholder="e.g. 8:00AM">
+                    </div>
+                    <div class="form-group">
+                        <label for="course-time-end">End Time</label>
+                        <input type="text" class="form-control" id="course-time-end" placeholder="e.g. 10:00AM">
+                    </div>
+                    <button class="btn btn-secondary add-time" type="button">Add Time</button>
+                    <button class="btn btn-secondary cancel-time" type="button">Cancel Time</button>
+                </div>
+                <!-- TIME CONTROLS TEMPLATE -->
+                <div class="time-controls hidden"></div>
+                <div class="form-group btn-add-course-time">
+                    <label>Add a section</label>
+                    <a href="#" class="btn btn-secondary btn-sm add-section"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                </div>
+            </fieldset>
+            <button class="btn btn-primary" type="submit">Add Course</button>
+        </form>
+    </script>
+    <script type="text/x-handlebars-template" id="course-view-errors-template">
+        {{#each errors}}
+        <p>{{name}}: {{message}}</p>
+        {{/each}}
+    </script>
+    <!-- include source files here... -->
+    <script src="../js/models/course.js"></script>
+    <script src="../js/collections/schedule.js"></script>
+    <script src="../js/views/course-view.js"></script>
+    <!-- include spec files here... -->
+    <script src="models/test.course.js"></script>
+    <script src="collections/test.schedule.js"></script>
+    <script src="views/test.course-view.js"></script>
 </body>
 
 </html>

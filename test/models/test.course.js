@@ -145,8 +145,63 @@ describe('Course', function() {
 			// course.set({ classes: [{day: 'Tuesday', start: '1:00AM', end: '11:00PM'}] }, {validate: true});
 			// expect(_.find(course.validationError, function(err) { return err.name === 'classStartEndConflict'; } ).message).toEqual('Class end time cannot occur before start time.');
 		});
-
-		// TODO: create specific tests for classes -> day, start, and end times
 	});
 
+	describe('supports adding class times', function() {
+		it('only allows adding {day, start, end} objects', function() {
+			// test with invalid value
+			course.addClass('');
+
+			expect(course.get('classes').length).toEqual(0);
+
+			// test with invalid object
+			course.addClass({ start: '1:00PM', end: '3:00PM' });
+			expect(course.get('classes').length).toEqual(0);
+
+			// test with acceptable object
+			course.addClass({ day: 'Wednesday', start: '1:00PM', end: '3:00PM' });
+			expect(course.get('classes').length).toEqual(1);
+			course.addClass({ day: 'Friday', start: '12:00PM', end: '2:00PM' });
+			expect(course.get('classes').length).toEqual(2);
+
+			// UPGRADE: ensure that class times cannot be duplicated or overlap
+		});
+	});
+
+	describe('supports removing class times', function() {
+		var removedClass;
+
+		beforeEach(function() {
+			// direct setting of good classes array
+			course.attributes.classes = [
+				{ day: 'Monday', start: '1:00PM', end: '3:00PM' },
+				{ day: 'Tuesday', start: '9:00AM', end: '11:00AM' },
+				{ day: 'Friday', start: '10:00AM', end: '12:00PM' }
+			];
+		});
+
+		it('removes class time objects', function() {
+			var classToRemove;
+
+			// random invalid reference
+			course.removeClass('');
+			expect(course.get('classes').length).toEqual(3);
+
+			// good reference, remove the second class time
+			removedClass = course.removeClass(course.get('classes')[1]);
+			expect(course.get('classes').length).toEqual(2);
+			expect(course.get('classes').indexOf(removedClass)).toBe(-1);
+		});
+
+		it('removes class time objects by index', function() {
+			// random invalid index
+			course.removeClass(3);
+			expect(course.get('classes').length).toEqual(3);
+
+			// good index
+			removedClass = course.removeClass(1);
+			expect(course.get('classes').length).toEqual(2);
+			expect(course.get('classes').indexOf(removedClass)).toBe(-1);
+		});
+	});
 });

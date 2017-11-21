@@ -12,7 +12,43 @@
 				// TODO: include remaining defaults
 			},
 
-			// TODO: include a funtion to add class times (e.g. addClassTime(time))
+			/**
+			 * Adds a class time object to this course.
+			 * @param {Object} classTime - a single class time representation
+			 * @param {string} classTime.day - the day of the week for the class
+			 * @param {string} classTime.start - the start time for the class
+			 * @param {string} classTime.end - the end time for the class
+			 * @returns {Boolean|undefined} - the result from calling the validate() function or undefined if the classTime did not have the required attributes
+			 */
+			addClass: function(classTime) {
+				// light validation at this level
+				if (_.isObject(classTime) && classTime.hasOwnProperty('day') && classTime.hasOwnProperty('start') && classTime.hasOwnProperty('end')) {
+					this.attributes.classes.push(classTime);
+					this.trigger('change'); // force a render
+					return this.isValid(); // trigger full validation
+				}
+			},
+
+			/**
+			 * Removes a class time from this course.
+			 * @param {Object|number} value - the actual class time object to remove or the index of the class to remove
+			 * @returns {Object|undefined} - the removed class time object if successful or undefined if no object was removed
+			 */
+			removeClass: function(value) {
+				var idx;
+
+				if (_.isNumber(value)) {
+					// remove by index
+					if (value >= 0 && value < this.attributes.classes.length) {
+							return this.attributes.classes.splice(value, 1);
+					}
+				} else if (_.isObject(value)) {
+					// remove by ref
+					if ((idx = this.attributes.classes.indexOf(value)) > -1) {
+							return this.attributes.classes.splice(idx, 1);
+					}
+				}
+			},
 
 			validate: function(attrs) {
 				

@@ -100,8 +100,108 @@
     <script src="js/vendor/backbone.js"></script>
     <script src="js/vendor/handlebars-v4.0.11.js"></script>
     <!-- TEMPLATES -->
+
+    <script type="text/x-handlebars-template" id="course-view-template">
+        <h2>Add a Course</h2>
+        <div class="errors text-danger"></div>
+        <form class="course-form">
+            <div class="form-group">
+                <label for="course-code">Course Code</label>
+                <input type="text" class="form-control" id="course-code" placeholder="e.g. COMP1000" value="{{code}}">
+            </div>
+            <div class="form-group">
+                <label for="course-name">Course Name</label>
+                <input type="text" class="form-control" id="course-name" placeholder="Enter course name here" value="{{name}}">
+            </div>
+            <div class="form-group">
+                <label for="course-instructor">Course Instructor</label>
+                <input type="text" class="form-control" id="course-instructor" placeholder="Enter course instructor here" value="{{instructor}}">
+            </div>
+            <fieldset class="form-group border rounded p-2">
+                <h3>Course Times</h3>
+                <!-- ADDED TIMES DISPLAY -->
+                <div class="times-display">
+                    <table class="class-time-table">
+                        {{#each classes}}
+                        <tr class="class-time">
+                            <td class="day">{{day}}</td>
+                            <td class="start">{{start}}</td>
+                            <td class="end">{{end}}</td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </div>
+                <div class="time-controls ">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="course-time-day">Day of Week</label>
+                            <select class="form-control" id="course-time-day">
+                                <option value="monday" default>Monday</option>
+                                <option value="tuesday">Tuesday</option>
+                                <option value="wednesday">Wednesday</option>
+                                <option value="thursday">Thursday</option>
+                                <option value="friday">Friday</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-time-start">Start Time</label>
+                        <input type="text" class="form-control" id="course-time-start" placeholder="e.g. 8:00AM">
+                    </div>
+                    <div class="form-group">
+                        <label for="course-time-end">End Time</label>
+                        <input type="text" class="form-control" id="course-time-end" placeholder="e.g. 10:00AM">
+                    </div>
+                    <button class="btn btn-secondary add-time" type="button">Add Time</button>
+                    <button class="btn btn-secondary cancel-time" type="button">Cancel Time</button>
+                </div>
+                <!-- TIME CONTROLS TEMPLATE -->
+                <div class="time-controls hidden"></div>
+                <div class="form-group btn-add-course-time">
+                    <label>Add a section</label>
+                    <a href="#" class="btn btn-secondary btn-sm add-section"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                </div>
+            </fieldset>
+            <button class="btn btn-primary" type="submit">Save Course</button>
+            <button class="btn btn-warning cancel" type="button">Cancel Course</button>
+        </form>
+    </script>
+    <script type="text/x-handlebars-template" id="course-view-errors-template">
+        <ul class="list-group">
+        {{#each errors}}
+        <li class="list-group-item">{{attr}}: {{message}}</li>
+        {{/each}}
+        </ul>
+    </script>
+    <script type="text/x-handlebars-template" id="schedule-view-template">
+        <h2>Schedule Display</h2>
+        {{#if courses.length}}
+            <ul class="list-group">
+            {{#each courses}}
+                {{#with attributes}}
+                <li class="list-group-item">
+                    {{code}}: {{name}}
+                    <table border="1">
+                        <tr><th>Day</th><th>Start</th><th>End</th></tr>
+                        {{#each classes}}
+                        <tr><td>{{day}}</td><td>{{start}}</td><td>{{end}}</td></tr>
+                        {{/each}}
+                    </table>
+                </li>
+                {{/with}}
+            {{/each}}
+            </ul>
+        {{else}}
+            <p>No Courses</p>
+        {{/if}}
+    </script>
     
     <!-- APPLICATION SCRIPTS -->
+    <script src="js/models/course.js"></script>
+    <script src="js/collections/schedule.js"></script>
+    <script src="js/views/course-view.js"></script>
+    <script src="js/views/schedule-view.js"></script>
+    <script src="js/views/app-view.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 </body>

@@ -88,14 +88,40 @@
         <p>{{name}}: {{message}}</p>
         {{/each}}
     </script>
+    <script type="text/x-handlebars-template" id="schedule-view-template">
+        <h2>Schedule Display</h2>
+        {{#if courses.length}}
+            <ul class="list-group">
+            {{#each courses}}
+                {{#with attributes}}
+                <li class="list-group-item">
+                    {{code}}: {{name}}
+                    <table border="1">
+                        <tr><th>Day</th><th>Start</th><th>End</th></tr>
+                        {{#each classes}}
+                        <tr><td>{{day}}</td><td>{{start}}</td><td>{{end}}</td></tr>
+                        {{/each}}
+                    </table>
+                </li>
+                {{/with}}
+            {{/each}}
+            </ul>
+        {{else}}
+            <p>No Courses</p>
+        {{/if}}
+    </script>
     <!-- include source files here... -->
     <script src="../js/models/course.js"></script>
     <script src="../js/collections/schedule.js"></script>
     <script src="../js/views/course-view.js"></script>
+    <script src="../js/views/schedule-view.js"></script>
+    <script src="../js/views/app-view.js"></script>
     <!-- include spec files here... -->
     <script src="models/test.course.js"></script>
     <script src="collections/test.schedule.js"></script>
     <script src="views/test.course-view.js"></script>
+    <script src="views/test.schedule-view.js"></script>
+    <script src="views/test.app-view.js"></script>    
 </body>
 
 </html>

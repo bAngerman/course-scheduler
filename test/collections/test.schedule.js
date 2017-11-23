@@ -41,7 +41,7 @@ describe('Schedule', function() {
         describe('Filters course by instructor', function () {
             it('Returns only courses with the specified instructor', function () {
                 expect(schedule.forInstructor('Jane Doe').length).toEqual(2);
-                expect(schedule.forInstructor('Jack Doe').length).toEqual(0);
+                expect(schedule.forInstructor('').length).toEqual(0);
             });
         });
     });

@@ -3,12 +3,13 @@
 	var app = exports.app || (exports.app = {}),
 
 		Course = Backbone.Model.extend({
-			defaults: {
-				name: '',
-				code: '',
-				instructor: '',
-				classes: []
-
+			defaults: function() {
+				return {
+					name: '',
+					code: '',
+					instructor: '',
+					classes: []
+				};
 				// TODO: include remaining defaults
 			},
 

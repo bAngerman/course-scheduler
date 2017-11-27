@@ -95,7 +95,14 @@ describe('CourseView', function () {
                 view.$el.find('input#course-name').val('Computing 1');
                 view.$el.find('input#course-instructor').val('Jane Doe');
                 // TODO: manually set classes for the view.model
-
+                view.model.set({
+                    classes: [
+                        {day: 'Monday', start: '8:00AM', end: '10:00AM'},
+                        {day: 'Thursday', start: '8:00AM', end: '10:00AM'},
+                        {day: 'Wednesday', start: '8:00AM', end: '10:00AM'},
+                        {day: 'Friday', start: '8:00AM', end: '10:00AM'}
+                    ]
+                });
                 // test the code
                 view.$el.find('input#course-code').val('');
                 view.$el.find('.course-form').trigger('submit');
@@ -108,6 +115,22 @@ describe('CourseView', function () {
                 view.$el.find('input#course-code').val('COMP1000');
 
                 // TODO: test the name and instructor
+                view.$el.find('input#course-name').val('');
+                view.$el.find('.course-form').trigger('submit');
+                expect(app.schedule.add).not.toHaveBeenCalled();
+                expect(view.renderErrors).toHaveBeenCalled();
+
+                view.$el.find('input#course-code').val('Computing 1');
+
+                view.$el.find('input#course-name').val('');
+                view.$el.find('.course-form').trigger('submit');
+                expect(app.schedule.add).not.toHaveBeenCalled();
+                expect(view.renderErrors).toHaveBeenCalled();
+
+                view.$el.find('input#course-instructor').val('');
+                view.$el.find('.course-form').trigger('submit');
+                expect(app.schedule.add).not.toHaveBeenCalled();
+                expect(view.renderErrors).toHaveBeenCalled();
             });
         });
 

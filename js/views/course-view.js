@@ -26,6 +26,7 @@
       }
 
       // TODO: the view should listen to the model for changes and render
+        this.listenTo(this.model, 'change', this.render);
     },
 
     render: function() {

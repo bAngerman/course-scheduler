@@ -3,6 +3,17 @@ describe('CourseView', function () {
 
     beforeEach(function () {
         view = new app.views.CourseView();
+        view.model.set({
+            code: 'COMP1000',
+            name: 'Computing 1',
+            instructor: 'Jane Doe',
+            classes: [
+                {day: 'Monday', start: '8:00AM', end: '10:00AM'},
+                {day: 'Thursday', start: '8:00AM', end: '10:00AM'},
+                {day: 'Wednesday', start: '8:00AM', end: '10:00AM'},
+                {day: 'Friday', start: '8:00AM', end: '10:00AM'}
+            ]
+        });
         view.render(); // need some DOM elements to test
     });
 
@@ -24,17 +35,7 @@ describe('CourseView', function () {
 
         describe('with a course', function () {
             beforeEach(function () {
-                view.model.set({
-                        code: 'COMP1000',
-                        name: 'Computing 1',
-                        instructor: 'Jane Doe',
-                        classes: [
-                            {day: 'Monday', start: '8:00AM', end: '10:00AM'},
-                            {day: 'Thursday', start: '8:00AM', end: '10:00AM'},
-                            {day: 'Wednesday', start: '8:00AM', end: '10:00AM'},
-                            {day: 'Friday', start: '8:00AM', end: '10:00AM'}
-                        ]
-                });
+
              });
 
             it('renders the expected course code', function () {

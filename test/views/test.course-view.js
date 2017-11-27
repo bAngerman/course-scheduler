@@ -145,7 +145,14 @@ describe('CourseView', function () {
                 view.$el.find('input#course-name').val('Computing 1');
                 view.$el.find('input#course-instructor').val('Jane Doe');
                 // TODO: manually add classes
-
+                view.model.set({
+                    classes: [
+                        {day: 'Monday', start: '8:00AM', end: '10:00AM'},
+                        {day: 'Thursday', start: '8:00AM', end: '10:00AM'},
+                        {day: 'Wednesday', start: '8:00AM', end: '10:00AM'},
+                        {day: 'Friday', start: '8:00AM', end: '10:00AM'}
+                    ]
+                });
                 view.$el.find('.course-form').trigger('submit'); // should be good!
 
                 // check that the values have been pulled from the markup and set on the view model

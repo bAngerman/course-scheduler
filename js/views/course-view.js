@@ -62,6 +62,8 @@
 
     addSection: function() {
       // TODO: complete the function as per the provided test in test.course-view.js 119
+      this.$el.find('.btn-add-course-time').addClass('hidden');
+      this.$el.find('.time-controls').removeClass('hidden');
     },
 
     addClassTime: function() {

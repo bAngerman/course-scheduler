@@ -174,9 +174,10 @@
 					errors.push({name: 'emptyInstructor', message: 'Instructor\'s name cannot be empty.'});
 				}
 
-				if (attrs.hasOwnProperty('classes') && _.isEmpty(attrs.classes)) {
-					errors.push({name: 'emptyCourseList', message: 'Provide at least one course.'});
-				}
+				// if (attrs.hasOwnProperty('classes') && _.isEmpty(attrs.classes)) {
+				// 	errors.push({name: 'emptyCourseList', message: 'Provide at least one course.'});
+				// }
+				// We probably dont want to check this here since we have an addClass helper function.
 
 				if (attrs.hasOwnProperty('classes') && classesKeyMissing('day')) {
 					errors.push({name: 'missingClassDay', message: 'Class day is missing.'});						

@@ -58,7 +58,7 @@ describe('CourseView', function () {
                 // TODO: complete the test
                 // (hint, need to 'listenTo' the model in initialize:
                 // see backbone applications text TodoView example)
-                view.model.set({code: 'COMP1100'}, {validate: true});
+                view.model.set({code: 'COMP1100'}); 
 
                 expect(view.$el.find('input#course-code')).toHaveValue('COMP1100');
             });
@@ -152,11 +152,14 @@ describe('CourseView', function () {
                 expect(view.model.attributes.code).toEqual('COMP1000');
                 // TODO: complete for the remaining values (name and instructor)
 
+                expect(view.model.attributes.name).toEqual('Computing 1');
+                expect(view.model.attributes.instructor).toEqual('Jane Doe');
+
                 expect(app.schedule.add).toHaveBeenCalledWith(view.model);
             });
         });
 
-        xit('shows .time-controls and hides .btn-add-course-time when .btn.add-section is clicked', function () {
+        it('shows .time-controls and hides .btn-add-course-time when .btn.add-section is clicked', function () {
             // prepare the view for the test
             expect(view.$el.find('.time-controls')).toHaveClass('hidden');
             expect(view.$el.find('.btn-add-course-time')).not.toHaveClass('hidden');
@@ -167,11 +170,14 @@ describe('CourseView', function () {
             expect(view.$el.find('.time-controls')).not.toHaveClass('hidden');
         });
 
-        xit('shows .btn.add-section and hides .time-controls when .btn.cancel-time', function () {
+        it('shows .btn.add-section and hides .time-controls when .btn.cancel-time is clicked', function () {
             // TODO: complete the test for proper functioning of the .btn.add-secton button
+
+            
+
         });
 
-        xit('adds a class time and hides .time-controls when .btn.add-time is clicked', function () {
+        it('adds a class time and hides .time-controls when .btn.add-time is clicked', function () {
             // prepare the view for the test
             view.$el.find('.time-controls').removeClass('hidden');
             view.$el.find('.btn-add-section').addClass('hidden');

@@ -65,11 +65,12 @@ describe('Course', function() {
 			expect(_.find(course.validationError, function(err) { return err.name === 'emptyInstructor'; } ).message).toEqual('Instructor\'s name cannot be empty.');			
 		});
 
-		it('ensures at least one class is provided', function() {
-			// empty classes array
-			course.set({classes: []}, {validate: true});
-			expect(_.find(course.validationError, function(err) { return err.name === 'emptyCourseList'; } ).message).toEqual('Provide at least one course.');
-		});
+		// it('ensures at least one class is provided', function() {
+		// 	// empty classes array
+		// 	course.set({classes: []}, {validate: true});
+		// 	expect(_.find(course.validationError, function(err) { return err.name === 'emptyCourseList'; } ).message).toEqual('Provide at least one course.');
+		// });
+		// see course.js line 180
 
 		it('ensures a course day is provided for each class', function() {
 			// missing day property

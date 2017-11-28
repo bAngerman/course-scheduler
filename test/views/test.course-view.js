@@ -169,14 +169,14 @@ describe('CourseView', function () {
             expect(view.$el.find('.time-controls')).not.toHaveClass('hidden');
         });
 
-        it('shows .btn.add-section and hides .time-controls when .btn.cancel-time is clicked', function () {
+        xit('shows .btn.add-section and hides .time-controls when .btn.cancel-time is clicked', function () {
             // TODO: complete the test for proper functioning of the .btn.add-secton button
 
             
 
         });
 
-        it('adds a class time and hides .time-controls when .btn.add-time is clicked', function () {
+        xit('adds a class time and hides .time-controls when .btn.add-time is clicked', function () {
             // prepare the view for the test
             view.$el.find('.time-controls').removeClass('hidden');
             view.$el.find('.btn-add-section').addClass('hidden');

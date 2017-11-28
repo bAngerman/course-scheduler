@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="en-us">
 
@@ -26,7 +27,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="#">Add Course</a>
+                    <a class="nav-item nav-link active add-course" href="#">Add Course</a>
                 </div>
             </div>
         </nav>
@@ -34,60 +35,8 @@
     <main>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-4 course-display">
-                    <h2>Add a Course</h2>
-                    <form class="course-form">
-                        <div class="form-group">
-                            <label for="course-code">Course Code</label>
-                            <input type="text" class="form-control" id="course-code" placeholder="e.g. COMP1000">
-                        </div>
-                        <div class="form-group">
-                            <label for="course-name">Course Name</label>
-                            <input type="text" class="form-control" id="course-name" placeholder="Enter course name here">
-                        </div>
-                        <div class="form-group">
-                            <label for="course-instructor">Course Instructor</label>
-                            <input type="text" class="form-control" id="course-instructor" placeholder="Enter course instructor here">
-                        </div>
-                        <fieldset class="form-group border rounded p-2">
-                            <h3>Course Times</h3>
-                            <!-- ADDED TIMES DISPLAY -->
-                            <div class="times-display hidden">
-                                <div class="form-group">
-                                    <div class="form-group">
-                                        <label for="course-time-day">Day of Week</label>
-                                        <select class="form-control" id="course-time-day">
-                                            <option value="monday" default>Monday</option>
-                                            <option value="tuesday">Tuesday</option>
-                                            <option value="wednesday">Wednesday</option>
-                                            <option value="thursday">Thursday</option>
-                                            <option value="friday">Friday</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="course-time-start">Start Time</label>
-                                    <input type="text" class="form-control" id="course-time-start" placeholder="e.g. 8:00AM">
-                                </div>
-                                <div class="form-group">
-                                    <label for="course-time-end">End Time</label>
-                                    <input type="text" class="form-control" id="course-time-end" placeholder="e.g. 10:00AM">
-                                </div>
-                                <button class="btn btn-secondary" type="button">Add Time</button>
-                            </div>
-                            <!-- TIME CONTROLS TEMPLATE -->
-                            <div class="time-controls"></div>
-                            <div class="form-group btn-add-course-time">
-                                <label>Add a course time</label>
-                                <a href="#" class="btn-secondary btn-sm add-course-time"><i class="fa fa-plus" aria-hidden="true"></i></a>
-                            </div>
-                        </fieldset>
-                        <button class="btn btn-primary" type="submit">Add Course</button>
-                    </form>
-                </div>
-                <div class="col-8 schedule-display">
-                    <h2>Schedule Display</h2>
-                </div>
+                <div class="col-4 course-display"></div>
+                <div class="col-8 schedule-display"></div>
             </div>
         </div>
     </main>
@@ -100,7 +49,6 @@
     <script src="js/vendor/backbone.js"></script>
     <script src="js/vendor/handlebars-v4.0.11.js"></script>
     <!-- TEMPLATES -->
-
     <script type="text/x-handlebars-template" id="course-view-template">
         <h2>Add a Course</h2>
         <div class="errors text-danger"></div>
@@ -131,7 +79,7 @@
                         {{/each}}
                     </table>
                 </div>
-                <div class="time-controls">
+                <div class="time-controls ">
                     <div class="form-group">
                         <div class="form-group">
                             <label for="course-time-day">Day of Week</label>
@@ -195,7 +143,6 @@
             <p>No Courses</p>
         {{/if}}
     </script>
-    
     <!-- APPLICATION SCRIPTS -->
     <script src="js/models/course.js"></script>
     <script src="js/collections/schedule.js"></script>

@@ -10,6 +10,7 @@ describe('ScheduleView', function() {
     describe('without any courses added', function() {
       it('displays a message that no courses are added or exist', function() {
         // TODO: what should be displayed when there are no courses?
+        expect(view.$el.find('p').text()).toEqual('No Courses');
       });
     });
 
@@ -35,13 +36,13 @@ describe('ScheduleView', function() {
         view.render();
       });
 
-      it('renders the expected course or courses', function() {
+      xit('renders the expected course or courses', function() {
         // TODO: tests for display of desired courses
       });
     });
 
     describe('renders when collection is modified', function() {
-      it('displays updated values', function() {
+      xit('displays updated values', function() {
         // TODO: complete the test
         // (hint, need to 'listenTo' the collection in initialize: 
         // see backbone applications text TodoView example)
@@ -50,7 +51,7 @@ describe('ScheduleView', function() {
   });
 
   describe('supports interactive events', function() {
-    it('listens for the required events', function() {
+    xit('listens for the required events', function() {
       var exptectedEvents = {
         // TODO: add event for viewing/modifying a displayed course in the view
       };
@@ -58,7 +59,7 @@ describe('ScheduleView', function() {
       expect(view.events).toEqual(exptectedEvents);
     });
 
-    it('renders a course for modification when X is clicked', function() {
+    xit('renders a course for modification when X is clicked', function() {
       // TODO: complete the test for successful click and render
     });
   });

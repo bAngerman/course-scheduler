@@ -19,9 +19,10 @@
 </head>
 
 <body>
+    <!-- TEMPLATES -->
     <script type="text/x-handlebars-template" id="course-view-template">
         <h2>Add a Course</h2>
-        <div class="errors"></div>
+        <div class="errors text-danger"></div>
         <form class="course-form">
             <div class="form-group">
                 <label for="course-code">Course Code</label>
@@ -49,7 +50,7 @@
                         {{/each}}
                     </table>
                 </div>
-                <div class="time-controls hidden">
+                <div class="time-controls ">
                     <div class="form-group">
                         <div class="form-group">
                             <label for="course-time-day">Day of Week</label>
@@ -80,13 +81,16 @@
                     <a href="#" class="btn btn-secondary btn-sm add-section"><i class="fa fa-plus" aria-hidden="true"></i></a>
                 </div>
             </fieldset>
-            <button class="btn btn-primary" type="submit">Add Course</button>
+            <button class="btn btn-primary" type="submit">Save Course</button>
+            <button class="btn btn-warning cancel" type="button">Cancel Course</button>
         </form>
     </script>
     <script type="text/x-handlebars-template" id="course-view-errors-template">
+        <ul class="list-group">
         {{#each errors}}
-        <p>{{name}}: {{message}}</p>
+        <li class="list-group-item">{{attr}}: {{message}}</li>
         {{/each}}
+        </ul>
     </script>
     <script type="text/x-handlebars-template" id="schedule-view-template">
         <h2>Schedule Display</h2>

@@ -51,7 +51,11 @@
         // UPGRADE: is this a new course or an existing one?
         app.schedule.add(this.model);
 
-        // UPGRADE: reset the form fields
+        // empties form on valid add Course
+        this.$el.find('input#course-code').val('');
+        this.$el.find('input#course-name').val('');
+        this.$el.find('input#course-instructor').val('');
+
       } else {
         // invalid course, show the error messages
         this.renderErrors();

@@ -141,14 +141,10 @@ describe('CourseView', function () {
                 view.$el.find('input#course-name').val('Computing 1');
                 view.$el.find('input#course-instructor').val('Jane Doe');
                 // TODO: manually add classes
-                view.model.set({
-                    classes: [
-                        {day: 'Monday', start: '8:00AM', end: '10:00AM'},
-                        {day: 'Thursday', start: '8:00AM', end: '10:00AM'},
-                        {day: 'Wednesday', start: '8:00AM', end: '10:00AM'},
-                        {day: 'Friday', start: '8:00AM', end: '10:00AM'}
-                    ]
-                });
+                view.$el.find('select#course-time-day').val('Thursday');
+                view.$el.find('input#course-time-start').val('8:00AM');
+                view.$el.find('input#course-time-end').val('10:00AM');
+
                 view.$el.find('.course-form').trigger('submit'); // should be good!
 
                 // check that the values have been pulled from the markup and set on the view model
@@ -187,7 +183,9 @@ describe('CourseView', function () {
 
             view.$el.find('.btn.add-time').trigger('click');
 
-            expect(view.model.attributes.classes.length).toEqual(1);
+            // we are going to add two class times here to make sure this shit works
+
+            expect(view.model.attributes.classes.length).toEqual(2);
 
             expect(view.$el.find('.time-controls')).toHaveClass('hidden');
             expect(view.$el.find('.btn-add-section')).not.toHaveClass('hidden');

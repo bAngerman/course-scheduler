@@ -40,6 +40,7 @@
 
     addUpdateCourse: function(evt) {
       // gather data from the form
+      evt.preventDefault();
       this.model.set({
         code: this.$el.find('input#course-code').val(),
         name: this.$el.find('input#course-name').val(),
@@ -60,8 +61,6 @@
         // invalid course, show the error messages
         this.renderErrors();
       }
-
-      evt.preventDefault();
     },
 
     addSection: function() {

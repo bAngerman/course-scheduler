@@ -1,7 +1,9 @@
 (function(exports) {
 
 	var app = exports.app || (exports.app = {});
-	
-	app = new app.views.AppView();
+
+	// i think this works?
+	app.schedule = new app.collections.Schedule();
+	app.view = new app.views.AppView();
 
 }(this));

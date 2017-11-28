@@ -77,15 +77,20 @@
 
       // UPGRADE: complete basic validation in course.js, ensure that the day is valid, the start
       // and end are correct format (you decide),and that start is before end
-      this.model.addClass({ day: day, start: start, end: end });
 
-      if (!this.model.isValid()) {
+      if (this.model.addClass({day: day, start: start, end: end})) { //inserts if valid.
+        this.$el.find('.time-controls').addClass('hidden');
+        this.$el.find('.btn-add-course-time').removeClass('hidden');
+      }
+      else { // invalid
         this.renderErrors();
       }
     },
 
     resetTimeForm: function() {
       // TODO: complete as per your created test in test.course-view.js line 130
+      this.$el.find('.time-controls').addClass('hidden');
+      this.$el.find('.btn-add-course-time').removeClass('hidden');
     }
 
   });

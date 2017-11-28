@@ -95,7 +95,7 @@ describe('CourseView', function () {
                 view.$el.find('input#course-name').val('Computing 1');
                 view.$el.find('input#course-instructor').val('Jane Doe');
                 // TODO: manually set classes for the view.model
-                view.$el.find('select#course-time-day').val('Thursday');
+                view.$el.find('select#course-time-day').val('thursday');
                 view.$el.find('input#course-time-start').val('8:00AM');
                 view.$el.find('input#course-time-end').val('10:00AM');
 
@@ -141,9 +141,10 @@ describe('CourseView', function () {
                 view.$el.find('input#course-name').val('Computing 1');
                 view.$el.find('input#course-instructor').val('Jane Doe');
                 // TODO: manually add classes
-                view.$el.find('select#course-time-day').val('Thursday');
-                view.$el.find('input#course-time-start').val('8:00AM');
-                view.$el.find('input#course-time-end').val('10:00AM');
+                // I dont know why we need class times here. We shouldnt because .course-form submit only sends a course to the model.
+                // view.$el.find('select#course-time-day').val('thursday');
+                // view.$el.find('input#course-time-start').val('8:00AM');
+                // view.$el.find('input#course-time-end').val('10:00AM');
 
                 view.$el.find('.course-form').trigger('submit'); // should be good!
 
@@ -169,26 +170,55 @@ describe('CourseView', function () {
             expect(view.$el.find('.time-controls')).not.toHaveClass('hidden');
         });
 
-        xit('shows .btn.add-section and hides .time-controls when .btn.cancel-time is clicked', function () {
+        it('shows .btn.add-section and hides .time-controls when .btn.cancel-time is clicked', function () {
             // TODO: complete the test for proper functioning of the .btn.add-secton button
-
-            
-
-        });
-
-        xit('adds a class time and hides .time-controls when .btn.add-time is clicked', function () {
-            // prepare the view for the test
+            // prepare the view for the test 
             view.$el.find('.time-controls').removeClass('hidden');
-            view.$el.find('.btn-add-section').addClass('hidden');
+            view.$el.find('.btn-add-course-time').addClass('hidden');
 
-            view.$el.find('.btn.add-time').trigger('click');
-
-            // we are going to add two class times here to make sure this shit works
-
-            expect(view.model.attributes.classes.length).toEqual(2);
+            view.$el.find('.btn.cancel-time').trigger('click');
 
             expect(view.$el.find('.time-controls')).toHaveClass('hidden');
-            expect(view.$el.find('.btn-add-section')).not.toHaveClass('hidden');
+            expect(view.$el.find('.add-section')).not.toHaveClass('hidden');
+        });
+
+        it('adds a class time and hides .time-controls when .btn.add-time is clicked', function () {
+
+            // this test fails when its the only one ran... it doesnt have a schedule???
+            // somehow this tempSchedule helps it work...
+            var tempSchedule = app.schedule || {};
+            app.schedule = {};
+            app.schedule.add = submitSpy;
+
+            // prepare the view for the test
+            view.$el.find('.time-controls').removeClass('hidden');
+            view.$el.find('.btn-add-course-time').addClass('hidden');
+
+            view.$el.find('input#course-code').val('COMP1000');
+            view.$el.find('input#course-name').val('Computing 1');
+            view.$el.find('input#course-instructor').val('Jane Doe');
+            
+            // We seem to need a course in order to pass validation... so manually add a course here
+            view.$el.find('.course-form').trigger('submit');
+
+            view.$el.find('select#course-time-day').val('thursday');
+            view.$el.find('input#course-time-start').val('8:00AM');
+            view.$el.find('input#course-time-end').val('10:00AM');
+
+            // this adds a class time to the course.
+            view.$el.find('.btn.add-time').trigger('click');
+
+            // this expect doesnt do shit.
+            expect(view.model.attributes.classes.length).toEqual(1);
+
+            // We can verify the values are what we expect
+            expect(view.model.attributes.classes[0].day).toEqual('thursday');
+            expect(view.model.attributes.classes[0].start).toEqual('8:00AM');
+            expect(view.model.attributes.classes[0].end).toEqual('10:00AM');
+            
+
+            expect(view.$el.find('.time-controls')).toHaveClass('hidden');
+            expect(view.$el.find('.btn-add-course-time')).not.toHaveClass('hidden');
         });
     });
 });

@@ -20,6 +20,7 @@
       }
 
       // TODO: the view should listen to the model for changes and render
+        this.listenTo(this.collection, 'change', this.render);
     },
 
     render: function() {

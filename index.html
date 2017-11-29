@@ -127,11 +127,11 @@
             {{#each courses}}
                 {{#with attributes}}
                 <li class="list-group-item">
-                    {{code}}: {{name}}
+                    <span>{{code}}: {{name}}</span>                    
                     <table border="1">
                         <tr><th>Day</th><th>Start</th><th>End</th></tr>
                         {{#each classes}}
-                        <tr><td>{{day}}</td><td>{{start}}</td><td>{{end}}</td></tr>
+                        <tr><td class="schedule-day">{{day}}</td><td class="schedule-start">{{start}}</td><td class="schedule-end">{{end}}</td></tr>
                         {{/each}}
                     </table>
                 </li>

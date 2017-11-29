@@ -9,16 +9,16 @@ describe('CourseView', function () {
 
     describe('renders a view', function () {
         describe('without a course', function () {
-            it('contains inupt#course-code', function () {
+            it('contains input#course-code', function () {
                 expect(view.$el.find('input#course-code')).toExist();
             });
 
             // TODO: tests for presence of required elements
-            it('contains a course name', function () {
+            it('contains input#course-name', function () {
                 expect(view.$el.find('input#course-name')).toExist();
             });
 
-            it('contains an instructor', function () {
+            it('contains input#course-instructor', function () {
                 expect(view.$el.find('input#course-instructor')).toExist();
             });
         });
@@ -90,10 +90,11 @@ describe('CourseView', function () {
                 var errorSpy = jasmine.createSpy('errorSpy');
                 view.renderErrors = errorSpy;
 
-                // begin with valid vlaues for a course and then test each one
+                // begin with valid values for a course and then test each one
                 view.$el.find('input#course-code').val('COMP1000');
                 view.$el.find('input#course-name').val('Computing 1');
                 view.$el.find('input#course-instructor').val('Jane Doe');
+
                 // TODO: manually set classes for the view.model
                 view.$el.find('select#course-time-day').val('thursday');
                 view.$el.find('input#course-time-start').val('8:00AM');
@@ -141,6 +142,7 @@ describe('CourseView', function () {
                 view.$el.find('input#course-name').val('Computing 1');
                 view.$el.find('input#course-instructor').val('Jane Doe');
                 // TODO: manually add classes
+
                 // I dont know why we need class times here. We shouldnt because .course-form submit only sends a course to the model.
                 // view.$el.find('select#course-time-day').val('thursday');
                 // view.$el.find('input#course-time-start').val('8:00AM');
@@ -171,7 +173,7 @@ describe('CourseView', function () {
         });
 
         it('shows .btn.add-section and hides .time-controls when .btn.cancel-time is clicked', function () {
-            // TODO: complete the test for proper functioning of the .btn.add-secton button
+            // TODO: complete the test for proper functioning of the .btn.add-section button
             // prepare the view for the test 
             view.$el.find('.time-controls').removeClass('hidden');
             view.$el.find('.btn-add-course-time').addClass('hidden');

@@ -37,14 +37,14 @@ describe('ScheduleView', function() {
           expect(view.$el.find('.list-group-item:nth-child(2) span').text()).toEqual('COMP1001: Course 2');
           expect(view.$el.find('.list-group-item:nth-child(3) span').text()).toEqual('COMP1002: Course 3');
 
-          // currently these dont select correctly
-          // expect(view.$el.find('.list-group-item:nth-child(1) .schedule-day:nth-child(1)').text()).toEqual('Monday');
-          // expect(view.$el.find('.list-group-item:nth-child(1) .schedule-start:nth-child(1)').text()).toEqual('8:00AM');
-          // expect(view.$el.find('.list-group-item:nth-child(1) .schedule-end:nth-child(1)').text()).toEqual('10:00AM');
+          // yikes this is ugly
+          expect(view.$el.find('.list-group-item:nth-child(1)').find('.schedule-day').get(0).innerHTML).toEqual('Monday');
+          expect(view.$el.find('.list-group-item:nth-child(1)').find('.schedule-start').get(0).innerHTML).toEqual('8:00AM');
+          expect(view.$el.find('.list-group-item:nth-child(1)').find('.schedule-end').get(0).innerHTML).toEqual('10:00AM');
 
-          // expect(view.$el.find('.list-group-item:nth-child(1) .schedule-day:nth-child(2)').text()).toEqual('Thursday');
-          // expect(view.$el.find('.list-group-item:nth-child(1) .schedule-start:nth-child(2)').text()).toEqual('8:00AM');
-          // expect(view.$el.find('.list-group-item:nth-child(1) .schedule-end:nth-child(2)').text()).toEqual('10:00AM');
+          expect(view.$el.find('.list-group-item:nth-child(1)').find('.schedule-day').get(1).innerHTML).toEqual('Thursday');
+          expect(view.$el.find('.list-group-item:nth-child(1)').find('.schedule-start').get(1).innerHTML).toEqual('8:00AM');
+          expect(view.$el.find('.list-group-item:nth-child(1)').find('.schedule-end').get(1).innerHTML).toEqual('10:00AM');
         });
       });
 
@@ -56,8 +56,16 @@ describe('ScheduleView', function() {
           view.collection.models[0].set({code: 'COMP3000' });
 
           expect(view.$el.find('.list-group-item:nth-child(1) span').text()).toEqual('COMP3000: Course 1');
-          expect(view.$el.find('.list-group-item:nth-child(2) span').text()).toEqual('COMP1001: Course 2');
-          expect(view.$el.find('.list-group-item:nth-child(3) span').text()).toEqual('COMP1002: Course 3');
+          
+          view.collection.models[0].set({name: 'Cooking 1'});
+
+          expect(view.$el.find('.list-group-item:nth-child(1) span').text()).toEqual('COMP3000: Cooking 1');
+
+          view.collection.models[0].set({ classes: {day: 'Friday', start: '2:00PM', end: '4:00PM'} });
+          
+          // expect(view.$el.find('.list-group-item:nth-child(1)').find('.schedule-day').get(0).innerHTML).toEqual('Friday');
+          // expect(view.$el.find('.list-group-item:nth-child(1)').find('.schedule-start').get(0).innerHTML).toEqual('2:00PM');
+          // expect(view.$el.find('.list-group-item:nth-child(1)').find('.schedule-end').get(0).innerHTML).toEqual('4:00PM');         
 
           // currently these dont select correctly
           // expect(view.$el.find('.list-group-item:nth-child(1) .schedule-day:nth-child(1)').text()).toEqual('Monday');

@@ -52,10 +52,10 @@
         // UPGRADE: is this a new course or an existing one?
         app.schedule.add(this.model);
 
-        // empties form on valid add Course
-        this.$el.find('input#course-code').val('');
-        this.$el.find('input#course-name').val('');
-        this.$el.find('input#course-instructor').val('');
+        // I dont think we need this
+        // this.$el.find('input#course-code').val('');
+        // this.$el.find('input#course-name').val('');
+        // this.$el.find('input#course-instructor').val('');
 
       } else {
         // invalid course, show the error messages
@@ -81,6 +81,7 @@
       if (this.model.addClass({day: day, start: start, end: end})) { //inserts if valid.
         this.$el.find('.time-controls').addClass('hidden');
         this.$el.find('.btn-add-course-time').removeClass('hidden');
+        this.render();
       }
       else { // invalid
         this.renderErrors();

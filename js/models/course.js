@@ -28,8 +28,7 @@
 					// why do we push the class times before validating them?
 					this.attributes.classes.push(classTime);
 
-					// why are we doing this? re-rendering causes test "CourseView supports interactive events adds a class time and hides .time-controls when .btn.add-time is clicked" to be falsly positive.
-					// this.trigger('change'); // force a render
+					this.trigger('change'); // force a render
 					
 					return this.isValid(); // trigger full validation
 				}

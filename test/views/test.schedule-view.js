@@ -73,6 +73,7 @@ describe('ScheduleView', function () {
                     // TODO: complete the test
                     // (hint, need to 'listenTo' the collection in initialize:
                     // see backbone applications text TodoView example)
+
                     view.collection.models[0].set({code: 'COMP3000'});
 
                     expect(view.$el.find('.list-group-item:nth-child(1) span').text()).toEqual('COMP3000: Course 1');
@@ -83,21 +84,11 @@ describe('ScheduleView', function () {
 
                     //expect(view.$el.find('.list-group-item:nth-child(1):first-child table tr:nth-child(2) .schedule-day').text()).toEqual('Monday');
                     expect(view.$el.find('.list-group-item:first-child table tr:nth-child(2) .schedule-day').text()).toEqual('Monday');
-                    view.collection.models[0].set({classes: {day: 'Friday', start: '2:00PM', end: '4:00PM'}});
+                    view.collection.models[0].set({classes: [{day: 'Friday', start: '2:00PM', end: '4:00PM'}] });
 
-                    //expect(view.$el.find('.list-group-item:nth-child(1):first-child table tr:nth-child(2) .schedule-day').text()).toEqual('Monday');
-                    // expect(view.$el.find('.list-group-item:nth-child(1)').find('.schedule-day').get(0).innerHTML).toEqual('Friday');
-                    // expect(view.$el.find('.list-group-item:nth-child(1)').find('.schedule-start').get(0).innerHTML).toEqual('2:00PM');
-                    // expect(view.$el.find('.list-group-item:nth-child(1)').find('.schedule-end').get(0).innerHTML).toEqual('4:00PM');
-
-                    // currently these dont select correctly
-                    // expect(view.$el.find('.list-group-item:nth-child(1) .schedule-day:nth-child(1)').text()).toEqual('Monday');
-                    // expect(view.$el.find('.list-group-item:nth-child(1) .schedule-start:nth-child(1)').text()).toEqual('8:00AM');
-                    // expect(view.$el.find('.list-group-item:nth-child(1) .schedule-end:nth-child(1)').text()).toEqual('10:00AM');
-
-                    // expect(view.$el.find('.list-group-item:nth-child(1) .schedule-day:nth-child(2)').text()).toEqual('Thursday');
-                    // expect(view.$el.find('.list-group-item:nth-child(1) .schedule-start:nth-child(2)').text()).toEqual('8:00AM');
-                    // expect(view.$el.find('.list-group-item:nth-child(1) .schedule-end:nth-child(2)').text()).toEqual('10:00AM');
+                    expect(view.$el.find('.list-group-item:nth-child(1):first-child table tr:nth-child(2) .schedule-day').text()).toEqual('Friday');
+                    expect(view.$el.find('.list-group-item:nth-child(1):first-child table tr:nth-child(2) .schedule-start').text()).toEqual('2:00PM');
+                    expect(view.$el.find('.list-group-item:nth-child(1):first-child table tr:nth-child(2) .schedule-end').text()).toEqual('4:00PM');
                 });
             });
         });

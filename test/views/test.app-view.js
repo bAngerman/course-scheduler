@@ -23,8 +23,12 @@ describe('AppView', function() {
       expect(view.events).toEqual(exptectedEvents);
     });
 
-    xit('renders a course view when a.add-course is clicked', function() {
-      expect(view.$el.find('.course-display').html()).toBeEmpty();
+    it('renders a course view when a.add-course is clicked', function() {
+
+      // This test doesnt work because .course-display, and a.add-course only exists in the non test index.html
+      // Do we need another template in order to emulate this?
+
+      expect(view.$el.find('.course-display')).not.toExist();
 
       view.$el.find('a.add-course').trigger('click');
 

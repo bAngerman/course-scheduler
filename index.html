@@ -131,7 +131,7 @@
                     <table border="1">
                         <tr><th>Day</th><th>Start</th><th>End</th></tr>
                         {{#each classes}}
-                        <tr><td class="schedule-day">{{day}}</td><td class="schedule-start">{{start}}</td><td class="schedule-end">{{end}}</td></tr>
+                        <tr><td class="schedule-day">{{day}}</td><td class="schedule-start">{{start}}</td><td class="schedule-end">{{end}}</td><td><button class="btn btn-danger delete-time" data-parent={{@../index}} data-index="{{@index}}">X</button></td></td></tr>
                         {{/each}}
                     </table>
                 </li>

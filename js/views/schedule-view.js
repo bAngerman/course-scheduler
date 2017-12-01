@@ -10,6 +10,7 @@
     events: {
       // TODO: event listener to view/modify an existing course
       // TODO: [OPTIONAL] event(s) to filter the view
+      'click .btn.delete-time': 'removeClassTime'
     },
 
     initialize: function(options) {
@@ -27,6 +28,15 @@
     render: function() {
       this.$el.html(this.template({ courses: this.collection.models }));
       return this;
+    },
+
+    removeClassTime: function(evt) {
+      var parentIdx = parseInt(evt.target.dataset.parent),
+          idx = parseInt(evt.target.dataset.index);
+
+      if (this.collection.models[parentIdx].removeClass(idx) != 'undefined') {
+        this.render();
+      }
     }
   });
 

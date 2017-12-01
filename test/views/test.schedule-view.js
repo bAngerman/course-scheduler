@@ -92,21 +92,38 @@ describe('ScheduleView', function () {
                 });
             });
         });
-
-
     });
 
     describe('supports interactive events', function () {
-        xit('listens for the required events', function () {
+        it('listens for the required events', function () {
             var exptectedEvents = {
                 // TODO: add event for viewing/modifying a displayed course in the view
+                'click .btn.delete-time': 'removeClassTime'
             };
 
             expect(view.events).toEqual(exptectedEvents);
         });
 
-        xit('renders a course for modification when X is clicked', function () {
+        it('renders a course for modification when X is clicked', function () {
             // TODO: complete the test for successful click and render
+
+            // add a course and classes array
+            view.collection.add([
+                {
+                    code: 'COMP1000',
+                    name: 'Course 1',
+                    instructor: 'Jane Doe',
+                    classes: [{day: 'Monday', start: '8:00AM', end: '10:00AM'}, {day: 'Thursday', start: '8:00AM', end: '10:00AM'}]
+                }]);
+
+            // see if the row exists before
+            expect(view.$el.find('.list-group-item:nth-child(1) table tr:nth-child(3)')).toExist();
+
+            // trigger click event for the correct X
+            view.$el.find(".delete-time[data-index='1']").trigger('click');
+
+            // see if the remove worked
+            expect(view.$el.find('.list-group-item:nth-child(1) table tr:nth-child(3)')).not.toExist();
         });
     });
 });

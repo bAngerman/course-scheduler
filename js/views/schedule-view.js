@@ -37,7 +37,12 @@
       if (this.collection.models[parentIdx].removeClass(idx) != 'undefined') {
         this.render();
       }
-    }
+    },
+
+      modifyCourse: function(evt) {
+          app.appView.renderCourseView(evt, this.collection.get(evt.currentTarget.dataset['id']));
+          app.router.navigate('courses/' + evt.currentTarget.dataset['id'], {trigger:true});
+      }
   });
 
   // export the ScheduleView model

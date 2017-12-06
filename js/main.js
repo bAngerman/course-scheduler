@@ -6,4 +6,8 @@
 	app.schedule = new app.collections.Schedule();
 	app.view = new app.views.AppView();
 
+    //fire up the router
+    app.router = new app.routers.AppRouter();
+    Backbone.history.start();
+
 }(this));

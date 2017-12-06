@@ -82,7 +82,6 @@ describe('ScheduleView', function () {
 
                     expect(view.$el.find('.list-group-item:nth-child(1) span').text()).toEqual('COMP3000: Cooking 1');
 
-                    //expect(view.$el.find('.list-group-item:nth-child(1):first-child table tr:nth-child(2) .schedule-day').text()).toEqual('Monday');
                     expect(view.$el.find('.list-group-item:first-child table tr:nth-child(2) .schedule-day').text()).toEqual('Monday');
                     view.collection.models[0].set({classes: [{day: 'Friday', start: '2:00PM', end: '4:00PM'}] });
 

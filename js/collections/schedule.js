@@ -4,6 +4,8 @@
         Schedule = exports.Backbone.Collection.extend({
             model: app.models.Course,
 
+            localStorage: new Backbone.LocalStorage('Schedule'),
+            
             forDay: function(day) {
                 return this.filter(function(course) {
                     var courseCheck;

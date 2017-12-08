@@ -39,10 +39,10 @@
       }
     },
 
-      modifyCourse: function(evt) {
-          app.appView.renderCourseView(evt, this.collection.get(evt.currentTarget.dataset['id']));
-          app.router.navigate('courses/' + evt.currentTarget.dataset['id'], {trigger:true});
-      }
+    modifyCourse: function(evt) {
+        app.appView.renderCourseView(evt, this.collection.get(evt.currentTarget.dataset['id']));
+        app.router.navigate('courses/' + evt.currentTarget.dataset['id'], {trigger:true});
+    }
   });
 
   // export the ScheduleView model

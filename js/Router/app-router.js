@@ -2,16 +2,20 @@
     var app = exports.app || (exports.app = {}),
 
         AppRouter = exports.Backbone.Router.extend({
+
+
             routes: {
-                '': 'index',               // /route
+                'index': 'index',               // /route
                 'courses/:id': 'renderCourse',  // #courses/12
             },
 
             index: function () {
                 app.schedule.fetch();
+                this.sync();
             },
 
             renderCourse: function (id) {
+            
                 // fake event object
                 var evt = {
                     preventDefault: function () {

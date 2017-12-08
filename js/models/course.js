@@ -3,6 +3,7 @@
 	var app = exports.app || (exports.app = {}),
 
 		Course = Backbone.Model.extend({
+			
 			defaults: function() {
 				return {
 					name: '',
@@ -29,7 +30,8 @@
 					this.attributes.classes.push(classTime);
 
 					this.trigger('change'); // force a render
-					
+					this.save();
+										
 					return this.isValid(); // trigger full validation
 				}
 			},
@@ -53,6 +55,7 @@
 							return this.attributes.classes.splice(idx, 1);
 					}
 				}
+				this.save();
 			},
 
 			validate: function(attrs) {
